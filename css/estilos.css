@@ -1,0 +1,26 @@
+table{
+    margin: 0 auto;
+    background-color: black;
+    width: 400px;
+    height: 550px;
+}
+h1{
+    text-align: center;
+}
+.pantalla{
+    font-size: 50px;
+    font-family: DigifaceWide;
+    width: 300px;
+    height: 80px;
+    
+}
+.boton{
+    margin: 0%;
+    padding: 0%;
+    background-color: gray;
+    width: 80px;
+    height: 80px;
+}
+tr{
+    text-align: center;
+}

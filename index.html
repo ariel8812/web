@@ -9,76 +9,113 @@
 			background-color:green;
 		}
 	</style>
+	<link rel="stylesheet" href="css\estilos.css">
 </head>
 <body>
 	<div>
 		<h1>Calculadora</h1>
 		<table name= "calculadora"style="border: black solid 1px;">
 			<tr>
-				<td colspan="5"><input id="mostrarPantalla" type="text" value=""></td>
+				<td colspan="4"><input class="pantalla" id="mostrarPantalla" type="text" value=""></td>
 			</tr>
 			<tr>
-				<td><button id="button7" onClick="pantalla7()" value="7">7</button></td>
-				<td><button id="button8" onClick="pantalla8()" value="8">8</button></td>
-				<td><button id="button9" onClick="pantalla9()" value="9">9</button></td>
-				<td><button>+</button></td>
+				<td><button class="boton" onClick="mostrar(7)">7</button></td>
+				<td><button class="boton" onClick="mostrar(8)" value="8">8</button></td>
+				<td><button class="boton" onClick="mostrar(9)" value="9">9</button></td>
+				<td><button class="boton" onclick="obtenerOperador(`suma`)">+</button></td>
 			</tr>
 			<tr>
-				<td><button>4</button></td>
-				<td><button>5</button></td>
-				<td><button>6</button></td>
-				<td><button>-</button></td>
+				<td><button class="boton" onClick="mostrar(4)">4</button></td>
+				<td><button class="boton" onClick="mostrar(5)">5</button></td>
+				<td><button class="boton" onClick="mostrar(6)">6</button></td>
+				<td><button class="boton" onclick="obtenerOperador(`resta`)">-</button></td>
 			</tr>
 			<tr>
-				<td><button>1</button></td>
-				<td><button>2</button></td>
-				<td><button>3</button></td>
-				<td><button>x</button></td>
+				<td><button class="boton" onClick="mostrar(1)">1</button></td>
+				<td><button class="boton" onClick="mostrar(2)">2</button></td>
+				<td><button class="boton" onClick="mostrar(3)">3</button></td>
+				<td><button class="boton" onclick="obtenerOperador(`multiplicar`)">x</button></td>
 			</tr>
 			<tr>
-				<td><button>CE</button></td>
-				<td><button>0</button></td>
-				<td><button>=</button></td>
-				<td><button>/</button></td>
+				<td><button class="boton" onclick="borrarPantalla()" >CE</button></td>
+				<td><button class="boton" onClick="mostrar(0)">0</button></td>
+				<td><button class="boton" onclick="calcular()">=</button></td>
+				<td><button class="boton" onclick="obtenerOperador(`dividir`)">/</button></td>
 			</tr>
 		</table>
 	</div>
 
 	<script>
-
+		var pantalla="";
 		var resultado=0;
+		var operador="";
+		var numero1= 0;
+		var numero2= 0;
+
+		function mostrar(valor){
+			pantalla = pantalla + valor;
+			document.getElementById("mostrarPantalla").value = pantalla;
+		}
+		function obtenerOperador(operacion){
+			numero1 = parseInt( document.getElementById(`mostrarPantalla`).value);
+			operador = operacion;
+			document.getElementById("mostrarPantalla").value="";
+			pantalla = "";
+		}
+		function calcular(){
+			numero2 = parseInt( document.getElementById(`mostrarPantalla`).value);
+			switch(operador){
+				case `suma`:
+				sumar();
+				break;
+				case`resta`:
+				restar();
+				break;
+				case`multiplicar`:
+				multiplicar();
+				break;
+				case`dividir`:
+				dividir();
+			}
+		}
+		function borrarPantalla(){
+			document.getElementById("mostrarPantalla").value="";
+			numero1 = 0;
+			numero2 = 0;
+			resultado = 0;
+			operador = "";
+			pantalla = "";
+		}
 
 		function sumar(){
-			//todo
+			resultado =numero1 + numero2;
+			document.getElementById(`mostrarPantalla`).value = resultado;
 		}
 
 
 		function restar(){
-			//todo
+			resultado=numero1 - numero2;
+			document.getElementById(`mostrarPantalla`).value = resultado;
 		}
 
 
 		function multiplicar(){
-			//todo
+			resultado=numero1 * numero2;
+			document.getElementById(`mostrarPantalla`).value = resultado;
 		}
 
 
 		function dividir(valor){
-			//todo
-			alert(valor);
+			if (numero2 == 0) {
+				alert("NO EXISTE DIVISION POR CERO");
+			}else{
+				resultado=numero1 / numero2;
+				document.getElementById(`mostrarPantalla`).value = resultado;
+			}
+			
+			
 		}
-		function pantalla7(){
-			var valor= document.getElementById("button7").value;
-			document.getElementById("mostrarPantalla").value= valor;
-		}
-		function pantalla8(){
-			var valor= document.getElementById("button8").value;
-			document.getElementById("mostrarPantalla").value=document.getElementById("mostrarPantalla").value + valor;
-		}
-		function pantalla9(){
-			var valor= document.getElementById("button9").value;
-			document.getElementById("mostrarPantalla").value=document.getElementById("mostrarPantalla").value + valor;
-		}
+		
 
 
 		//Otras funciones que se necesite
