@@ -3,6 +3,7 @@ table{
     background-color: black;
     width: 400px;
     height: 550px;
+    border-radius: 15px;
 }
 h1{
     text-align: center;
@@ -12,14 +13,18 @@ h1{
     font-family: DigifaceWide;
     width: 300px;
     height: 80px;
+    border-radius: 15px;
     
 }
 .boton{
+    font-family: Arial;
+    font-size: 30px;
     margin: 0%;
     padding: 0%;
     background-color: gray;
     width: 80px;
     height: 80px;
+    border-radius: 15px;
 }
 tr{
     text-align: center;
